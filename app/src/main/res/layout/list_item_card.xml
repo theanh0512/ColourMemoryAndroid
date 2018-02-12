@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <import type="android.view.View" />
+
+        <variable
+            name="card"
+            type="pham.user.colourmemoryandroid.vo.Card" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/space_8dp">
+
+        <ImageView
+            android:id="@+id/imageViewCardBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{card.state==2? View.INVISIBLE:View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/card_bg" />
+
+        <ImageView
+            android:id="@+id/imageViewCardOpen"
+            imageRes="@{card.content}"
+            android:layout_width="@dimen/space_0dp"
+            android:layout_height="@dimen/space_0dp"
+            android:visibility="@{card.state==1? View.VISIBLE:View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewCardBackground"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewCardBackground"
+            app:layout_constraintStart_toStartOf="@+id/imageViewCardBackground"
+            app:layout_constraintTop_toTopOf="@+id/imageViewCardBackground"
+            tools:srcCompat="@drawable/colour1" />
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
